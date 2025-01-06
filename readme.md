@@ -12,3 +12,7 @@ messages that start with . are cancelled and interpreted as commands
 
 ### Multiple Modes
 Multiple modes in one module
+
+### Easily Expandable
+![module example](https://github.com/Night-Client/NightClientV2/blob/main/e.png)
+Make a java file that extends Module and if you want to use events ModuleEvents (optional)
