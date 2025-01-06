@@ -16,3 +16,6 @@ Multiple modes in one module
 ### Easily Expandable
 ![module example](https://github.com/Night-Client/NightClientV2/blob/main/e.png)
 Make a java file that extends Module and if you want to use events ModuleEvents (optional)
+
+![command example](https://github.com/Night-Client/NightClientV2/blob/main/Screenshot%202025-01-05%20223321.png)
+Make a java file that extends Command
