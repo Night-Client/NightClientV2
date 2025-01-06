@@ -1,7 +1,29 @@
 # NightClient V2
 NightClient is a minecraft utility client I made for vannila Minecraft.
 
+## Usage
+
+### Download
+Download the jar from releases
+
+### Controls
+press right shift to open gui  
+type .cmd in chat to see commands  
+to rebind keys go to controls -> keybinds and scroll down
+
+### Version
+Made for minecraft fabric 1.21
+
+### Warning
+Do not use on servers with an anticheat
+
+### Help
+GUI does not fit the screen:  
+change your ui scale to a smaller value  
+(hope to fix soon)
+
 ## Features
+
 ### Crappy GUI
 ![gui](https://github.com/Night-Client/NightClientV2/blob/main/images/Screenshot%202025-01-05%20221749.png)
 GUI needs some help and requires a small ui scale
