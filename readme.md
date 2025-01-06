@@ -7,9 +7,11 @@ NightClient is a minecraft utility client I made for vannila Minecraft.
 Download the jar from releases
 
 ### Controls
-press right shift to open gui  
-type .cmd in chat to see commands  
-to rebind keys go to controls -> keybinds and scroll down
+Press right shift to open gui  
+Type .cmd in chat to see commands  
+To rebind keys go to controls -> keybinds and scroll down  
+Left click on a module to toggle it  
+Middle click on a module to go to the next mode
 
 ### Version
 Made for minecraft fabric 1.21
@@ -19,7 +21,7 @@ Do not use on servers with an anticheat
 
 ### Help
 GUI does not fit the screen:  
-change your ui scale to a smaller value  
+Change your ui scale to a smaller value  
 (hope to fix soon)
 
 ## Features
@@ -32,12 +34,17 @@ GUI needs some help and requires a small ui scale
 
 ### Commands
 ![commands](https://github.com/Night-Client/NightClientV2/blob/main/images/Screenshot%202025-01-05%20222035.png)  
-messages that start with . are cancelled and interpreted as commands
+Messages that start with . are cancelled and interpreted as commands
 
 ##
 
 ### Multiple Modes
 Multiple modes in one module
+
+##
+
+### Option Saving
+Save your selected modes when closing the game
 
 ##
 
