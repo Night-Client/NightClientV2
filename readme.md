@@ -20,9 +20,9 @@ Made for minecraft fabric 1.21
 Do not use on servers with an anticheat
 
 ### Help
-GUI does not fit the screen:  
+If your GUI does not fit the screen:  
 Change your ui scale to a smaller value  
-(hope to fix soon)
+(hope to fix this bug soon)
 
 ## Features
 
