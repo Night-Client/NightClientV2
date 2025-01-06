@@ -33,5 +33,14 @@ Make a java file that extends Module and if you want to use events ModuleEvents 
 ![command example](https://github.com/Night-Client/NightClientV2/blob/main/Screenshot%202025-01-05%20223321.png)
 Make a java file that extends Command
 
+##
+
 ### Modular
 Easily expand on the client
+
+##
+
+### Event System
+
+![events](https://github.com/Night-Client/NightClientV2/blob/main/Screenshot%202025-01-05%20224354.png)
+Multiple cancelable events
