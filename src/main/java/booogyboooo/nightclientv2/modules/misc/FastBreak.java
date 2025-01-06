@@ -14,6 +14,8 @@ public class FastBreak extends Module implements ModuleEvents {
 	public FastBreak() {
 		super(Type.Misc, "FastBreak", "Haste I", Key.NONE.key());
 		this.addMode("Haste I");
+		this.addMode("Haste II");
+		this.addMode("Haste III");
 	}
 	
 	@Override
@@ -32,8 +34,12 @@ public class FastBreak extends Module implements ModuleEvents {
 		if (MinecraftClient.getInstance().player == null) {
 			return;
 		}
-		if (this.getMode().equals("Haste I")) {
+		if (this.getMode().equals("Haste I") || this.getMode().equals("Haste II") || this.getMode().equals("Haste III")) {
 			MinecraftClient.getInstance().player.removeStatusEffect(StatusEffects.HASTE);
+		} else if (this.getMode().equals("Haste II")) {
+			MinecraftClient.getInstance().player.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 2147483647, 1));
+		} else if (this.getMode().equals("Haste III")) {
+			MinecraftClient.getInstance().player.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 2147483647, 2));
 		}
 	}
 	
@@ -44,6 +50,10 @@ public class FastBreak extends Module implements ModuleEvents {
 		}
 		if (this.getMode().equals("Haste I")) {
 			MinecraftClient.getInstance().player.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 2147483647, 0));
+		} else if (this.getMode().equals("Haste II")) {
+			MinecraftClient.getInstance().player.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 2147483647, 1));
+		} else if (this.getMode().equals("Haste III")) {
+			MinecraftClient.getInstance().player.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 2147483647, 2));
 		}
 	}
 	
