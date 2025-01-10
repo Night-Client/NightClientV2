@@ -49,7 +49,7 @@ Save your selected modes when closing the game
 ##
 
 ### Version
-1.21 fabric client
+1.21 fabric
 
 ## Coding
 
@@ -73,3 +73,7 @@ Easily expand on the client
 
 ![events](https://github.com/Night-Client/NightClientV2/blob/main/images/Screenshot%202025-01-05%20224354.png)
 Multiple cancelable events
+
+##
+
+(Images are from v1.0)
