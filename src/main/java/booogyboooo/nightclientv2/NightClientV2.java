@@ -41,6 +41,7 @@ import booogyboooo.nightclientv2.modules.misc.FastUse;
 import booogyboooo.nightclientv2.modules.misc.NoFall;
 import booogyboooo.nightclientv2.modules.movement.AntiKB;
 import booogyboooo.nightclientv2.modules.movement.Flight;
+import booogyboooo.nightclientv2.modules.movement.RightClickTP;
 import booogyboooo.nightclientv2.modules.movement.Scaffold;
 import booogyboooo.nightclientv2.modules.movement.Speed;
 import booogyboooo.nightclientv2.modules.render.FullBright;
@@ -105,6 +106,8 @@ public class NightClientV2 implements ModInitializer {
 		Speed speed = new Speed();
 		ModuleEventList.list.add(speed);
 		ModuleList.addToList(speed);
+
+		ModuleUtil.registerModule(new RightClickTP());
 		
 		//Render
 		FullBright fullBright = new FullBright();
