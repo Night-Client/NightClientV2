@@ -70,7 +70,7 @@ public class Scaffold extends Module implements ModuleEvents{
 			}
 		} else if (this.getMode().equals("Packet")) {
 			BlockPlacePacketUtil.placeBlockVannila(PlayerPosUtil.getBlockUnderPlayer(client, true));
-		} else if (this.getMode() == "Godbridge") {
+		} else if (this.getMode().equals("Godbridge")) {
 			this.client.player.setPitch(75f);
 			this.client.options.useKey.setPressed(true);
 			this.client.options.backKey.setPressed(true);
