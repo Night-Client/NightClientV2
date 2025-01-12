@@ -31,7 +31,7 @@ public class AutoClicker extends Module implements ModuleEvents {
 				MouseUtil.leftClick();
 			}
 		}
-		if (this.getMode() == "1.9+") {
+		if (this.getMode().equals("1.9+")) {
 			if (mc.crosshairTarget.getType() == HitResult.Type.ENTITY && mc.player.getAttackCooldownProgress(0.0F) >= 1.0f) {
 				MouseUtil.leftClick();
 			}
