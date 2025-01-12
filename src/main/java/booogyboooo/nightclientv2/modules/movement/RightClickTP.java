@@ -27,7 +27,7 @@ public class RightClickTP extends Module implements ModuleEvents {
 		if (!this.isToggled()) {
 			return;
 		}
-		if (this.getMode() == "Vannila") {
+		if (this.getMode().equals("Vannila")) {
 			if (mc.mouse.wasRightButtonClicked() && !buttonDown) {
 				buttonDown = true;
 				DelayUtil.timeout(() -> {buttonDown = false;}, 350);
@@ -39,7 +39,7 @@ public class RightClickTP extends Module implements ModuleEvents {
 					mc.player.setPos(block.getBlockPos().up().getX(), block.getBlockPos().up().getY(), block.getBlockPos().up().getZ());
 				}
 			}
-		} else if (this.getMode() == "Vannila (NoLim)") {
+		} else if (this.getMode().equals("Vannila (NoLim)")) {
 			if (mc.mouse.wasRightButtonClicked()) {
 				buttonDown = true;
 				DelayUtil.timeout(() -> {buttonDown = false;}, 350);
