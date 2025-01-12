@@ -24,7 +24,7 @@ public class NoFall extends Module implements ModuleEvents {
 		if (this.getMode().equals("Vannila")) {
 			MovePacketUtil.onGround(true);
 		}
-		if (this.getMode() == "AirPlace") {
+		if (this.getMode().equals("AirPlace")) {
 			if (mc.player.fallDistance > 2.5) {
 				BlockPlacePacketUtil.placeBlockVannila(PlayerPosUtil.getBlockUnderPlayer(mc, true));
 			}
