@@ -21,7 +21,7 @@ public class AntiKB extends Module implements ModuleEvents {
 	@Override
 	public void onKnockback(KnockbackEvent event) {
 		if (this.isToggled()) {
-			if (this.getMode() == "0x") {
+			if (this.getMode().equals("0x")) {
 				event.cancel(event);
 			} else if (this.getMode().equals("0.5x")){
 				event.modify(event.getX() * 0.5, event.getY(), event.getZ() * 0.5, event);
