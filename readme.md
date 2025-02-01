@@ -28,7 +28,7 @@ Change your ui scale to a smaller value
 
 ### Crappy GUI
 ![gui](https://github.com/Night-Client/NightClientV2/blob/main/images/Screenshot%202025-01-05%20221749.png)
-GUI needs some help and requires a small ui scale
+GUI needs some help and requires a small ui scale (Old Gui ^)
 
 ##
 
