@@ -109,6 +109,8 @@ public class NightClientV2 implements ModInitializer {
 		Speed speed = new Speed();
 		ModuleEventList.list.add(speed);
 		ModuleList.addToList(speed);
+
+		ModuleUtil.registerModule(new RightClickTP());
 		
 		ModuleUtil.registerModule(new RightClickTP());
 		
@@ -135,11 +137,14 @@ public class NightClientV2 implements ModInitializer {
 		ModuleUtil.registerModule(new AntiDurability());
 		ModuleUtil.registerModule(new Lag());
 		ModuleUtil.registerModule(new BookDupe());
+<<<<<<< HEAD
 		
 		//Render Event
 		WorldRenderEvents.BEFORE_DEBUG_RENDER.register(context -> {
 			EventManger.sendEvent(new RenderEvent(context));
 		});
+=======
+>>>>>>> 9ee48c80099ebcb501d0f56f07592cae66956a98
 		
 		//UI Keybind Listener
         ClientTickEvents.END_CLIENT_TICK.register(client -> {

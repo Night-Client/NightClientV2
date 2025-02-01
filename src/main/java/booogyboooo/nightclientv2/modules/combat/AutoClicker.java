@@ -33,7 +33,11 @@ public class AutoClicker extends Module implements ModuleEvents {
 			}
 		}
 		if (this.getMode().equals("1.9+")) {
+<<<<<<< HEAD
 			if (mc.crosshairTarget.getType() == HitResult.Type.ENTITY && mc.player.getAttackCooldownProgress(0.0F) >= 1.0f && mc.player.distanceTo(((EntityHitResult) mc.crosshairTarget).getEntity()) < 3.05) {
+=======
+			if (mc.crosshairTarget.getType() == HitResult.Type.ENTITY && mc.player.getAttackCooldownProgress(0.0F) >= 1.0f) {
+>>>>>>> 9ee48c80099ebcb501d0f56f07592cae66956a98
 				MouseUtil.leftClick();
 			}
 		}
