@@ -8,7 +8,8 @@
 		"ClientPlayerEntityMixin",
 		"ChatScreenMixin",
 		"InGameHudMixin",
-		"ClientPlayerInteractionManagerMixin"
+		"ClientPlayerInteractionManagerMixin",
+		"WorldRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

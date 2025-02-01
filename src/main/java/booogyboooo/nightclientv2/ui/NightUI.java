@@ -24,7 +24,7 @@ public class NightUI extends Screen {
     	
     	ModuleList.getList().forEach(module -> {
     		Renderer.drawModule(module, drawContext, textRenderer);
-    	});	
+    	});
     }
     
     @Override

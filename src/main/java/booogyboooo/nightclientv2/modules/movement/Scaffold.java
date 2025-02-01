@@ -8,7 +8,9 @@ import booogyboooo.nightclientv2.module.ModuleType.Type;
 import booogyboooo.nightclientv2.ui.data.ModuleList;
 import booogyboooo.nightclientv2.util.BlockPlacePacketUtil;
 import booogyboooo.nightclientv2.util.Key;
+import booogyboooo.nightclientv2.util.LoggerUtil;
 import booogyboooo.nightclientv2.util.PlayerPosUtil;
+import booogyboooo.nightclientv2.util.RayTraceUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -70,7 +72,7 @@ public class Scaffold extends Module implements ModuleEvents{
 			}
 		} else if (this.getMode().equals("Packet")) {
 			BlockPlacePacketUtil.placeBlockVannila(PlayerPosUtil.getBlockUnderPlayer(client, true));
-		} else if (this.getMode() == "Godbridge") {
+		} else if (this.getMode().equals("Godbridge")) {
 			this.client.player.setPitch(75f);
 			this.client.options.useKey.setPressed(true);
 			this.client.options.backKey.setPressed(true);

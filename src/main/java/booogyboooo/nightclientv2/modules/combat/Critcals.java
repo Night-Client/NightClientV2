@@ -13,8 +13,10 @@ public class Critcals extends Module implements ModuleEvents {
 	public Critcals() {
 		super(Type.Combat, "Critcals", "Packet", Key.NONE.key());
 		this.addMode("Packet");
+		this.addMode("Jump");
 	}
 	
+	@Override
 	public void onLeftClick(Event event) {
 		if (!(this.isToggled())) {
 			return;
@@ -31,5 +33,4 @@ public class Critcals extends Module implements ModuleEvents {
 			MovePacketUtil.move(mc.player.getX(), mc.player.getY() + 0, mc.player.getZ(), false);
 		}
 	}
-	
 }

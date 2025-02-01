@@ -4,11 +4,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import booogyboooo.nightclientv2.event.Event;
 import booogyboooo.nightclientv2.event.EventManger;
 import booogyboooo.nightclientv2.event.EventType;
+import booogyboooo.nightclientv2.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.Entity;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
@@ -39,5 +42,12 @@ public class MinecraftClientMixin {
         } else if (!client.options.attackKey.isPressed()) {
             wasAttackKeyPressed = false;
         }
+    }
+    
+    @Inject(method = "hasOutline", at = @At("HEAD"), cancellable = true)
+    private void outlineEntities(Entity entity, CallbackInfoReturnable<Boolean> ci) {
+    	if (RenderUtil.getEntitys().contains(entity.getType())) {
+    		ci.setReturnValue(true);
+    	}
     }
 }

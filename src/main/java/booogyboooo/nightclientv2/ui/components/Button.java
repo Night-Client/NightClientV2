@@ -36,4 +36,9 @@ public class Button {
 	public void nextMode() {
 		this.module.nextMode();
 	}
+	
+	public int[] getBounds() {
+		int[] bound = {this.startX, this.startY, this.endX, this.endY};
+		return bound;
+	}
 }

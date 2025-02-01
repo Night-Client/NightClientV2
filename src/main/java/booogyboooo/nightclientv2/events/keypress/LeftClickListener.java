@@ -1,4 +1,4 @@
-package booogyboooo.nightclientv2.event.keypress;
+package booogyboooo.nightclientv2.events.keypress;
 
 import booogyboooo.nightclientv2.event.Event;
 import booogyboooo.nightclientv2.event.EventListner;

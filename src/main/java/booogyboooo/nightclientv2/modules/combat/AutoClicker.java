@@ -6,6 +6,7 @@ import booogyboooo.nightclientv2.module.ModuleType;
 import booogyboooo.nightclientv2.util.Key;
 import booogyboooo.nightclientv2.util.MouseUtil;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.EntityHitResult;
 
 public class AutoClicker extends Module implements ModuleEvents {
 	
@@ -31,8 +32,8 @@ public class AutoClicker extends Module implements ModuleEvents {
 				MouseUtil.leftClick();
 			}
 		}
-		if (this.getMode() == "1.9+") {
-			if (mc.crosshairTarget.getType() == HitResult.Type.ENTITY && mc.player.getAttackCooldownProgress(0.0F) >= 1.0f) {
+		if (this.getMode().equals("1.9+")) {
+			if (mc.crosshairTarget.getType() == HitResult.Type.ENTITY && mc.player.getAttackCooldownProgress(0.0F) >= 1.0f && mc.player.distanceTo(((EntityHitResult) mc.crosshairTarget).getEntity()) < 3.05) {
 				MouseUtil.leftClick();
 			}
 		}

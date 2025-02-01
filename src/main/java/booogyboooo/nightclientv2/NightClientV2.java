@@ -3,6 +3,7 @@ package booogyboooo.nightclientv2;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import oowst.nightclientv2.NightClientV2Mirror;
@@ -24,28 +25,32 @@ import booogyboooo.nightclientv2.cmds.Cmd;
 import booogyboooo.nightclientv2.cmds.TP;
 import booogyboooo.nightclientv2.cmds.Test;
 import booogyboooo.nightclientv2.event.EventManger;
-import booogyboooo.nightclientv2.event.keypress.LeftClickListener;
 import booogyboooo.nightclientv2.event.module.ModuleEventList;
+import booogyboooo.nightclientv2.event.special.RenderEvent;
 import booogyboooo.nightclientv2.events.block.AttemptBlockPlaceListener;
 import booogyboooo.nightclientv2.events.chat.ChatEventListener;
+import booogyboooo.nightclientv2.events.keypress.LeftClickListener;
 import booogyboooo.nightclientv2.events.knockback.KnockbackListener;
+import booogyboooo.nightclientv2.events.render.RenderListener;
 import booogyboooo.nightclientv2.events.tick.PostTickListener;
 import booogyboooo.nightclientv2.events.tick.PreTickListener;
 import booogyboooo.nightclientv2.modules.combat.AutoClicker;
 import booogyboooo.nightclientv2.modules.combat.Critcals;
 import booogyboooo.nightclientv2.modules.exploit.AntiDurability;
+import booogyboooo.nightclientv2.modules.exploit.BookDupe;
 import booogyboooo.nightclientv2.modules.exploit.Lag;
 import booogyboooo.nightclientv2.modules.misc.FastBreak;
 import booogyboooo.nightclientv2.modules.misc.FastUse;
 import booogyboooo.nightclientv2.modules.misc.NoFall;
 import booogyboooo.nightclientv2.modules.movement.AntiKB;
 import booogyboooo.nightclientv2.modules.movement.Flight;
+import booogyboooo.nightclientv2.modules.movement.RightClickTP;
 import booogyboooo.nightclientv2.modules.movement.Scaffold;
 import booogyboooo.nightclientv2.modules.movement.Speed;
 import booogyboooo.nightclientv2.modules.render.FullBright;
-import booogyboooo.nightclientv2.modules.render.PlayerESP;
+import booogyboooo.nightclientv2.modules.render.ESP;
 import booogyboooo.nightclientv2.ui.NightUI;
-import booogyboooo.nightclientv2.ui.ThemeUI;
+import booogyboooo.nightclientv2.ui.NightUIV2;
 import booogyboooo.nightclientv2.ui.data.ModuleList;
 import booogyboooo.nightclientv2.ui.util.ModuleUtil;
 import booogyboooo.nightclientv2.util.Key;
@@ -58,9 +63,8 @@ public class NightClientV2 implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID + "|main");
 	public static final Logger DEBUG = LoggerFactory.getLogger(MOD_ID + "|debug");
 	public static final Logger BOOOGYBOOOO = LoggerFactory.getLogger(MOD_ID + "|booogyboooo");
-	private static KeyBinding openThemeKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("Open Theme Picker", Key.NONE.key(), "NightClient"));
-	private static KeyBinding openGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("Open UI", GLFW.GLFW_KEY_RIGHT_SHIFT, "NightClient"));
-	private static ThemeUI themeUI = new ThemeUI();
+	private static KeyBinding openGui2Key = KeyBindingHelper.registerKeyBinding(new KeyBinding("Open UI v2", GLFW.GLFW_KEY_RIGHT_SHIFT, "NightClient"));
+	private static KeyBinding openGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("Open UI", Key.NONE.key(), "NightClient"));
 	private String path = System.getProperty("user.home") + "/AppData/Roaming/.minecraft/NightClient";
 	private File conf = new File(path + "/config.txt");
 	
@@ -68,7 +72,7 @@ public class NightClientV2 implements ModInitializer {
 	public void onInitialize() {
 		NightClientV2Mirror.preInitialize();
 		
-		//TODO: Better Events System
+		//TODO: Better GUI
 		//TODO: Add events
 		
 		//Get MC
@@ -76,6 +80,7 @@ public class NightClientV2 implements ModInitializer {
 		Command.mc = MinecraftClient.getInstance();
 		
 		//Listeners
+		EventManger.registerEvent(new RenderListener());
 		EventManger.registerEvent(new KnockbackListener());
 		EventManger.registerEvent(new ChatEventListener());
 		EventManger.registerEvent(new PreTickListener());
@@ -105,11 +110,13 @@ public class NightClientV2 implements ModInitializer {
 		ModuleEventList.list.add(speed);
 		ModuleList.addToList(speed);
 		
+		ModuleUtil.registerModule(new RightClickTP());
+		
 		//Render
 		FullBright fullBright = new FullBright();
 		ModuleList.addToList(fullBright);
 		
-		//ModuleUtil.registerModule(new PlayerESP());
+		ModuleUtil.registerModule(new ESP());
 		
 		
 		//Misc
@@ -127,13 +134,19 @@ public class NightClientV2 implements ModInitializer {
 		//Exploits
 		ModuleUtil.registerModule(new AntiDurability());
 		ModuleUtil.registerModule(new Lag());
+		ModuleUtil.registerModule(new BookDupe());
+		
+		//Render Event
+		WorldRenderEvents.BEFORE_DEBUG_RENDER.register(context -> {
+			EventManger.sendEvent(new RenderEvent(context));
+		});
 		
 		//UI Keybind Listener
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (openGuiKey.wasPressed()) {
                 client.setScreen(new NightUI());
-            } else if (openThemeKey.wasPressed()) {
-            	client.setScreen(themeUI);
+            } else if (openGui2Key.wasPressed()) {
+            	client.setScreen(new NightUIV2());
             }
         });
         

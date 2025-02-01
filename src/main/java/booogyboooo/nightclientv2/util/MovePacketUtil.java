@@ -26,7 +26,7 @@ public class MovePacketUtil {
 	 * <br>
 	 * z
 	 * <br>
-	 * - b cord
+	 * - z cord
 	 * <br>
 	 * <br>
 	 * onGround
@@ -37,6 +37,34 @@ public class MovePacketUtil {
 		MinecraftClient client = MinecraftClient.getInstance();
 	    if (client.player != null && client.getNetworkHandler() != null) {
 	        PlayerMoveC2SPacket.Full packet = new PlayerMoveC2SPacket.Full(x, y, z, client.player.getYaw(), client.player.getPitch(), onGround);
+	        client.getNetworkHandler().sendPacket(packet);
+	    }
+	}
+	
+	/**
+	 * Send a move packet with an offset
+	 * <br>
+	 * - move(x, y, z)
+	 * <br>
+	 * <br>
+	 * offsetX
+	 * <br>
+	 * - X cord
+	 * <br>
+	 * <br>
+	 * offsetY
+	 * <br>
+	 * - Y cord
+	 * <br>
+	 * <br>
+	 * offsetZ
+	 * <br>
+	 * - z cord
+	 */
+	public static void move(double offsetX, double offsetY, double offsetZ) {
+		MinecraftClient client = MinecraftClient.getInstance();
+	    if (client.player != null && client.getNetworkHandler() != null) {
+	        PlayerMoveC2SPacket.Full packet = new PlayerMoveC2SPacket.Full(offsetX, offsetY, offsetZ, client.player.getYaw(), client.player.getPitch(), client.player.isOnGround());
 	        client.getNetworkHandler().sendPacket(packet);
 	    }
 	}
